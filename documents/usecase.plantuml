@@ -1,0 +1,70 @@
+@startuml Library Manager Use Case
+left to right direction
+
+actor "Читатель" as Reader
+actor "Администратор" as Admin
+
+rectangle "Library Manager" {
+
+    usecase "Регистрация" as UC_Register
+
+    usecase "Вход в систему" as UC_LoginReader
+    usecase "Вход в систему" as UC_LoginAdmin
+
+    usecase "Меню произведений" as UC_Books
+    usecase "Меню авторов" as UC_Authors
+    usecase "Меню бронирований" as UC_Reservations
+    usecase "Добавление администратора" as UC_CreateAdmin
+
+    usecase "Список произведений" as UC_ViewBooks
+    usecase "Добавление произведения" as UC_AddBook
+    usecase "Удаление произведения" as UC_DeleteBook
+
+    usecase "Список авторов" as UC_ViewAuthors
+    usecase "Добавление автора" as UC_AddAuthor
+    usecase "Удаление автора" as UC_DeleteAuthor
+
+    usecase "Список собственных бронирований" as UC_MyReservations
+    usecase "Бронирование произведения" as UC_CreateReservation
+
+    usecase "Список бронирований" as UC_AllReservations
+    usecase "Удаление бронирования" as UC_ReturnBook
+
+    usecase "Выбор произведения" as UC_SelectBook
+    usecase "Ввод данных книги" as UC_InputBook
+    usecase "Выбор автора" as UC_SelectAuthors
+}
+
+Reader -- UC_Register
+Reader -- UC_LoginReader
+
+Admin -- UC_LoginAdmin
+
+UC_LoginReader -- UC_ViewBooks
+UC_LoginReader -- UC_MyReservations
+UC_LoginReader -- UC_CreateReservation
+
+UC_LoginAdmin -- UC_Books
+UC_LoginAdmin -- UC_Authors
+UC_LoginAdmin -- UC_Reservations
+UC_LoginAdmin -- UC_CreateAdmin
+
+UC_Books -- UC_ViewBooks
+UC_Books -- UC_AddBook
+UC_Books -- UC_DeleteBook
+
+UC_Authors -- UC_ViewAuthors
+UC_Authors -- UC_AddAuthor
+UC_Authors -- UC_DeleteAuthor
+
+UC_Reservations -- UC_AllReservations
+UC_Reservations -- UC_ReturnBook
+
+UC_CreateReservation ..> UC_ViewBooks : <<include>>
+UC_CreateReservation ..> UC_SelectBook : <<include>>
+
+UC_AddBook ..> UC_InputBook : <<include>>
+UC_AddBook ..> UC_ViewAuthors : <<include>>
+UC_AddBook ..> UC_SelectAuthors : <<include>>
+
+@enduml
