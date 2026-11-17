@@ -33,16 +33,16 @@ LibraryManager/
 │   └── librarymanager/              # Основной пакет
 │       ├── __init__.py
 │       ├── main.py                  # Точка входа
-│       ├── auth.py                  # Вход и регистрация (интерфейс)
+│       ├── auth.py                  # Вход и регистрация
 │       ├── menu.py                  # Консольные меню
 │       ├── database/
-│       │   ├── database.py          # Подключение к SQLite, init_db()
+│       │   ├── database.py          # Подключение к SQLite
 │       │   └── schema.sql           # Создание таблиц и тестовые данные
 │       ├── models/                  # Модели предметной области
-│       ├── repositories/            # SQL-запросы (доступ к данным)
+│       ├── repositories/            # SQL-запросы
 │       └── services/                # Бизнес-логика
 │
-├── tests/                           # Автотесты
+├── tests/                           # Автоматические тесты
 ├── .gitignore
 ├── README.md
 └── requirements.txt
@@ -54,16 +54,16 @@ LibraryManager/
 Пользователь
      │
      ▼
-Консольный интерфейс (main.py, menu.py, auth.py)
+Консольный интерфейс
      │
      ▼
-Сервисный слой (services)
+Сервисный слой
      │
      ▼
-Слой доступа к данным (repositories)
+Слой доступа к данным
      │
      ▼
-База данных SQLite (database/schema.sql, library.db)
+База данных SQLite
 ```
 
 ## База данных
