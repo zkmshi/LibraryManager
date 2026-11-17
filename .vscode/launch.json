@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "LibraryManager: запуск",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "src.librarymanager.main",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
