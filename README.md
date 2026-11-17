@@ -33,16 +33,16 @@ LibraryManager/
 │   └── librarymanager/              # Основной пакет
 │       ├── __init__.py
 │       ├── main.py                  # Точка входа
-│       ├── auth.py                  # Вход и регистрация (интерфейс)
+│       ├── auth.py                  # Вход и регистрация
 │       ├── menu.py                  # Консольные меню
 │       ├── database/
-│       │   ├── database.py          # Подключение к SQLite, init_db()
+│       │   ├── database.py          # Подключение к SQLite
 │       │   └── schema.sql           # Создание таблиц и тестовые данные
 │       ├── models/                  # Модели предметной области
-│       ├── repositories/            # SQL-запросы (доступ к данным)
+│       ├── repositories/            # SQL-запросы
 │       └── services/                # Бизнес-логика
 │
-├── tests/                           # Автотесты
+├── tests/                           # Автоматические тесты
 ├── .gitignore
 ├── README.md
 └── requirements.txt
@@ -54,16 +54,16 @@ LibraryManager/
 Пользователь
      │
      ▼
-Консольный интерфейс (main.py, menu.py, auth.py)
+Консольный интерфейс
      │
      ▼
-Сервисный слой (services)
+Сервисный слой
      │
      ▼
-Слой доступа к данным (repositories)
+Слой доступа к данным
      │
      ▼
-База данных SQLite (database/schema.sql, library.db)
+База данных SQLite
 ```
 
 ## База данных
@@ -76,66 +76,3 @@ LibraryManager/
 ### ER-диаграмма
 
 ![ER-диаграмма](docs/diagrams/erd.png)
-
-### Таблицы
-
-| Таблица | Назначение |
-|---|---|
-| `roles` | Справочник ролей: Reader (1), Librarian (2) |
-| `reservation_statuses` | Справочник статусов: Active (1), Returned (2), Canceled (3) |
-| `users` | Пользователи (`role_id` → `roles`) |
-| `authors` | Авторы |
-| `books` | Произведения |
-| `book_authors` | Связь «автор — произведение» (M:N) |
-| `reservations` | Бронирования (`reader_id`, `librarian_id` → `users`, `book_id` → `books`, `status_id` → `reservation_statuses`) |
-
-Связи: `roles` 1:N `users`; `users` 1:N `reservations` (дважды — читатель и
-библиотекарь); `books` 1:N `reservations`; `reservation_statuses` 1:N
-`reservations`; `authors` M:N `books` через `book_authors`.
-
-### Тестовые учётные записи
-
-| Роль | Логин | Пароль |
-|---|---|---|
-| Администратор (библиотекарь) | `admin` | `admin` |
-| Читатель | `reader` | `reader` |
-
-Пароли хранятся в виде SHA-256-хэшей. В базу добавлены 6 русскоязычных
-авторов, 10 произведений и 3 тестовых бронирования.
-
-## Требования
-
-* Python 3.10 или выше;
-* Git.
-
-Внешние библиотеки не нужны (используется только стандартная библиотека).
-
-## Установка и запуск
-
-```bash
-git clone https://github.com/zkmshi/LibraryManager.git
-cd LibraryManager
-python -m venv .venv
-```
-
-Активация окружения: Windows PowerShell — `.venv\Scripts\Activate.ps1`,
-Linux/macOS — `source .venv/bin/activate`.
-
-Запуск из корневой папки проекта:
-
-```bash
-python -m src.librarymanager.main
-```
-
-Запуск тестов:
-
-```bash
-python -m unittest discover -s tests -t .
-```
-
-## Работа в Visual Studio Code
-
-Откройте папку `LibraryManager`, выберите интерпретатор Python из `.venv` и
-запустите конфигурацию «LibraryManager: запуск» (F5) — она описана в
-`.vscode/launch.json`. Для просмотра `library.db` удобно расширение
-**SQLite IntelliView** или программа DB Browser for SQLite.
