@@ -49,7 +49,6 @@ def _print_reservations(reservations):
         print(f"{r.reservation_id}. {title} | читатель {r.reader_id} | {r.reserved_at} | {status}")
 
 
-# ---------- Меню администратора (библиотекаря) ----------
 def librarian_menu(user):
     while True:
         print(f"\n===== Администратор ({user.login}) =====")
@@ -75,7 +74,6 @@ def librarian_menu(user):
             print("Неверный выбор")
 
 
-# ---------- Меню читателя ----------
 def reader_menu(user):
     while True:
         print(f"\n===== Читатель ({user.login}) =====")
@@ -106,7 +104,6 @@ def reader_menu(user):
             print("Неверный выбор")
 
 
-# ---------- Авторы ----------
 def authors_menu():
     while True:
         print("\n===== Авторы =====")
@@ -142,7 +139,6 @@ def authors_menu():
             print("Неверный выбор")
 
 
-# ---------- Произведения ----------
 def books_menu():
     while True:
         print("\n===== Произведения =====")
@@ -186,7 +182,6 @@ def books_menu():
             print("Неверный выбор")
 
 
-# ---------- Бронирования ----------
 def reservations_menu(user):
     while True:
         print("\n===== Бронирования =====")
