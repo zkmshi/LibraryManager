@@ -72,4 +72,4 @@ def cancel_reservation(reservation_id: int, reader_id: int):
 
 def get_status_name(status_id: int) -> str:
     status = reservation_status_repository.get_by_id(status_id)
-    return status.name if status else "Unknown"
+    return status.name if status else "Не найдено"
